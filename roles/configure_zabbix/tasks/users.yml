@@ -1,5 +1,4 @@
 ---
-# Vytvoření dedikovaného API uživatele s vysokým oprávněním pro potřeby Grafany
 - name: Create a new Zabbix user
   community.zabbix.zabbix_user:
     username: "{{ zabbix_api_user }}"
@@ -7,4 +6,16 @@
     role_name: "Super admin role"
     usrgrps:
       - "Zabbix administrators"
+    state: present
+
+- name: Create user Vojtech Libal
+  community.zabbix.zabbix_user:
+    username: "vojtalibal"
+    passwd: "mojeheslo123"
+    name: "Vojtech"
+    surname: "Libal"
+    email: "libal.vojtech@student.sposdk.cz"
+    role_name: "User role"
+    usrgrps:
+      - "Guests"
     state: present
